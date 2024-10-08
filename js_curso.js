@@ -39,4 +39,5 @@ function suma(){
 }
 
 let resultado=suma();
-console.log(resultado)
+console.log(resultado);
+console.log(suma());
