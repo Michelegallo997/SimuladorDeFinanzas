@@ -28,16 +28,50 @@
 // console.log(animales.length);
 
 // FUNTION EN JAVASCRIPT
-function saludar(){
-    console.log("hola mundo");
+// function saludar(){
+//     console.log("hola mundo");
     
-}
-saludar();
+// }
+// saludar();
 
-function suma(){
-    return 2 + 2;
-}
+// function suma(){
+//     return 2 + 2;
+// }
 
-let resultado=suma();
-console.log(resultado);
-console.log(suma());
+// let resultado=suma();
+// console.log(resultado);
+// console.log(suma());
+
+// ARGUMENTOS EN  JAVASCRIPT
+// function suma(a, b){
+//     return a + b;
+// }
+// let resul= suma(5,6);
+// console.log(resul);
+
+
+/// OPERDORES EN  JAVASCRIPT
+//arimeticos
+// let a=5;
+// let b=6;
+// console.log(a+b, "suma");
+// console.log(a-b, "resta");
+// console.log(a*b, "multiplicacion");
+// console.log(a/b, "divison");
+// console.log(a%b, "modulo");
+// console.log(a**b,"potencia");
+
+// //imcrementar
+// console.log(++a);
+// console.log(a++);
+// console.log(a);
+
+// //decrementar
+// console.log(--a);
+// console.log(a--);
+// console.log(a);
+
+// //asignacion
+// let c=5;
+// c+=5;
+// console.log(c);
