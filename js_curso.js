@@ -74,4 +74,4 @@
 // //asignacion
 // let c=5;
 // c+=5;
-// console.log(c);
+// console.log(c); kcjsjf
