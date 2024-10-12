@@ -74,4 +74,11 @@
 // //asignacion
 // let c=5;
 // c+=5;
-// console.log(c); kcjsjf
+// c-=5;
+// c*=5;
+// c/=5;
+// c%=5;
+// c**=5;
+// console.log(c); 
+
+// operadores de comparacion 
