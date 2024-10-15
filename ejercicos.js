@@ -104,9 +104,72 @@
 // let numeros= cunatosPositivos(array)
 // console.log(numeros);
 
-function precioCompleto(precio, impuesto){
-return precio * impuesto + precio;
+// function precioCompleto(precio, impuesto){
+// return precio * impuesto + precio;
 
+// }
+// let resultado= precioCompleto(19.90, 0.15);
+// console.log(resultado);
+
+// let array=[{
+//     id:1,
+//     name:'nocolas'
+// }, {
+//     id:2,
+//     name:'fionix'
+// },{
+//     id:3,
+//     name:'chanchito'
+// }
+// ];
+// let pares=[
+//     [1,{id: 1, name:'nocolas'}],
+//     [1,{id: 2, name:'fionix'}],
+//     [1,{id: 3, name:'chanchito'}],
+// ];
+
+// function toPairs(arr){
+//     let pairs=[];
+//     for (idx in arr){
+//         let element=arr[idx];
+//         pairs[idx]=[element.id, element];
+//     }
+//     return pairs;
+// }
+
+// let resultado= toPairs(array);
+// console.log(resultado);
+
+
+// let array=[2, 5, 7, 15, -5, -100, 55];
+
+// let nuevoarray= array.map(array=> array*2);
+
+// let otroarray= array.map(array=> array.filter )
+// console.log(nuevoarray);
+
+
+// const personas = [
+//     { nombre: 'Juan', edad: 25 },
+//     { nombre: 'Ana', edad: 30 },
+//     { nombre: 'Luis', edad: 35 }
+//   ];
+
+// const  nuevaData= personas.map(personas => personas.edad);
+// console.log(nuevaData);
+
+
+// const palabras = ['hola', 'mundo', 'javascript'];
+// const uperPalabra= palabras.map(palabras=> palabras.toUpperCase())
+// console.log(uperPalabra);
+
+
+function arrayTranformacion(array, transformacion){
+   return array.map(transformacion);
 }
-let resultado= precioCompleto(19.90, 0.15);
-console.log(resultado);
+let numeros=[4, 5, 6, 4, 12, 19, -8];
+let nombre=["michele", "juan", "vannesa", "eden", "libia"];
+
+let nombreUper= arrayTranformacion(nombre, number => number.toUpperCase());
+
+console.log(nombreUper);
