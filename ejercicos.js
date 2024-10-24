@@ -199,29 +199,136 @@ const palabras = ['manzana', 'perro', 'elefante', 'gato'];
 // console.log(reducePalabra);
 
 
-let combinarArray= palabras.reduce((acomulador, palabra)=> acomulador + " " + palabra);
-console.log(combinarArray);
+// let combinarArray= palabras.reduce((acomulador, palabra)=> acomulador + " " + palabra);
+// console.log(combinarArray);
 
 
-let contarLetras=  palabras.reduce((acomulador, palabras)=> (acomulador + palabras.length),0);
-console.log(contarLetras);
+// let contarLetras=  palabras.reduce((acomulador, palabras)=> (acomulador + palabras.length),0);
+// console.log(contarLetras);
 
 
-const numeros = [1, 2, 2, 3, 4, 4, 4, 5];
+// const numeros = [1, 2, 2, 3, 4, 4, 4, 5];
 
-const contarNumeros= numeros.reduce((acomulador, number)=>{
-   acomulador[number]= (acomulador[number] || 0) +1;
-   return acomulador
-}, {});
-console.log(contarNumeros);
-
-
-const personas = [
-   { nombre: 'Juan', edad: 25 },
-   { nombre: 'María', edad: 30 },
-   { nombre: 'Pedro', edad: 35 }
-];
+// const contarNumeros= numeros.reduce((acomulador, number)=>{
+//    acomulador[number]= (acomulador[number] || 0) +1;
+//    return acomulador
+// }, {});
+// console.log(contarNumeros);
 
 
-const nombrePersona= personas.map(person => person["nombre"]);
-console.log(nombrePersona);
+// const personas = [
+//    { nombre: 'Juan', edad: 25 },
+//    { nombre: 'María', edad: 30 },
+//    { nombre: 'Pedro', edad: 25 }
+// ];
+
+// const agrupadoPorEdad = personas.reduce((acumulador, persona) => {
+//    const { edad, nombre } = persona;
+   
+//    // Si la edad no existe como clave, la inicializamos con un arreglo vacío
+//    if (!acumulador[edad]) {
+//        acumulador[edad] = [];
+//    }
+
+//    // Agregamos el nombre al arreglo de la edad correspondiente
+//    acumulador[edad].push(nombre);
+
+//    return acumulador;
+// }, {});
+
+// console.log(agrupadoPorEdad);
+// // const nombrePersona= personas.map(person => person["nombre"]);
+// // console.log(nombrePersona);
+
+// const oldID= document.querySelector(".old-div");
+// const h1= document.getElementById("title");
+// const divMain= document.querySelector(".main-div");
+// let botton=document.querySelector("button");
+// let input=document.querySelector("#itemInput");
+// let addButton=document.querySelector("#addButton");
+// let list=document.querySelector("#dynamicList");
+// // botton.addEventListener("click", function() {
+// //    alert ("Boton presionado");
+// // });
+
+// function showMesagge(message){
+//    alert(message);
+// }
+
+// botton.addEventListener("click", showMesagge.bind(null, "boton"));
+
+
+
+
+// h1.innerText="muanipulando la programacion";
+// h1.innerHTML="<em>Nuevo</em>";
+// let imagen= document.querySelector("img");
+// imagen.setAttribute("src", "bun-logo.svg");
+// imagen.classList.add("img-fluid");
+
+// addButton.addEventListener("click", function(){
+//    if(input.value.trim() != ""){
+//       let newItem= document.createElement("li");
+//       newItem.innerText = input.value;
+//       list.appendChild(newItem);
+//       input.value="";
+//    }
+// });
+
+
+// divMain.style.backgroundColor="#ffcc00";
+
+// let list1= document.querySelectorAll(".ul.list > li");
+
+// document.body.removeChild(oldID);
+
+
+const bg_body= document.getElementById("bg_body");
+let isWhite=true;
+
+bg_body.addEventListener("click", () =>{
+   if (isWhite) {document.body.style.backgroundColor="black";}
+   else{
+   document.body.style.backgroundColor="white";}
+   isWhite= !isWhite;
+});
+
+
+const input= document.getElementById("itemInput");
+const button= document.getElementById("addButton");
+const ul= document.getElementById("dynamicList");
+
+button.addEventListener("click", ()=>{
+   if(input.value==""){
+      alert("debes anadir valores a la lista");
+   }
+   else{
+   const li= document.createElement('li');
+   li.textContent=input.value;
+   ul.appendChild(li);
+   input.value="";}
+
+});
+
+
+const textarea = document.getElementById('message');
+const counter = document.getElementById('charCount');
+
+textarea.addEventListener("input", ()=>{
+   let remainen= 100- textarea.value.length;
+   counter.textContent=remainen +"caracteres restante";
+})
+
+
+const button2 = document.getElementById('toggleButton');
+const paragraph = document.getElementById('content');
+
+button2.addEventListener('click', () => {
+    if (paragraph.style.display === 'none') {
+        paragraph.style.display = 'block';
+        button2.textContent = 'Ocultar';
+    } else {
+        paragraph.style.display = 'none';
+        button2.textContent = 'Mostrar';
+    }
+});

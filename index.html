@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simulador de Finanzas</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-blue-600 flex items-center justify-center h-screen">
+<body class="bg-blue-800 flex items-center justify-center h-screen">
 
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
         <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">Simulador de Finanzas</h2>
@@ -24,12 +24,23 @@
                 <label class="block text-gray-700">Ahorro inicial (en dólares):</label>
                 <input type="number" id="ahorroInicial" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 200" required>
             </div>
+            <div>
+                <label class="block text-gray-700">Ingresos mensuales (en dólares):</label>
+                <input type="number" id="ingresos" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 2000" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Gastos mensuales (en dólares):</label>
+                <input type="number" id="gastos" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 1500" required>
+            </div>
             <button type="button" onclick="calcularAhorro()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Calcular Ahorro
             </button>
         </form>
-    <!-- <script src="app.js"></script> -->
-    <!-- <script src="js_curso.js"></script> -->
-    <script src="ejercicos.js"></script>
+
+
+        <div id="resultados" class="mt-4 text-gray-800"></div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
