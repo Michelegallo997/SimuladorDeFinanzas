@@ -283,52 +283,73 @@ const palabras = ['manzana', 'perro', 'elefante', 'gato'];
 // document.body.removeChild(oldID);
 
 
-const bg_body= document.getElementById("bg_body");
-let isWhite=true;
+// const bg_body= document.getElementById("bg_body");
+// let isWhite=true;
 
-bg_body.addEventListener("click", () =>{
-   if (isWhite) {document.body.style.backgroundColor="black";}
-   else{
-   document.body.style.backgroundColor="white";}
-   isWhite= !isWhite;
-});
-
-
-const input= document.getElementById("itemInput");
-const button= document.getElementById("addButton");
-const ul= document.getElementById("dynamicList");
-
-button.addEventListener("click", ()=>{
-   if(input.value==""){
-      alert("debes anadir valores a la lista");
-   }
-   else{
-   const li= document.createElement('li');
-   li.textContent=input.value;
-   ul.appendChild(li);
-   input.value="";}
-
-});
+// bg_body.addEventListener("click", () =>{
+//    if (isWhite) {document.body.style.backgroundColor="black";}
+//    else{
+//    document.body.style.backgroundColor="white";}
+//    isWhite= !isWhite;
+// });
 
 
-const textarea = document.getElementById('message');
-const counter = document.getElementById('charCount');
+// const input= document.getElementById("itemInput");
+// const button= document.getElementById("addButton");
+// const ul= document.getElementById("dynamicList");
 
-textarea.addEventListener("input", ()=>{
-   let remainen= 100- textarea.value.length;
-   counter.textContent=remainen +"caracteres restante";
-})
+// button.addEventListener("click", ()=>{
+//    if(input.value==""){
+//       alert("debes anadir valores a la lista");
+//    }
+//    else{
+//    const li= document.createElement('li');
+//    li.textContent=input.value;
+//    ul.appendChild(li);
+//    input.value="";}
+
+// });
 
 
-const button2 = document.getElementById('toggleButton');
-const paragraph = document.getElementById('content');
+// const textarea = document.getElementById('message');
+// const counter = document.getElementById('charCount');
 
-button2.addEventListener('click', () => {
-    if (paragraph.style.display === 'none') {
-        paragraph.style.display = 'block';
-        button2.textContent = 'Ocultar';
-    } else {
-        paragraph.style.display = 'none';
-        button2.textContent = 'Mostrar';
-    }
-});
+// textarea.addEventListener("input", ()=>{
+//    let remainen= 100- textarea.value.length;
+//    counter.textContent=remainen +"caracteres restante";
+// })
+
+
+// const button2 = document.getElementById('toggleButton');
+// const paragraph = document.getElementById('content');
+
+// button2.addEventListener('click', () => {
+//     if (paragraph.style.display === 'none') {
+//         paragraph.style.display = 'block';
+//         button2.textContent = 'Ocultar';
+//     } else {
+//         paragraph.style.display = 'none';
+//         button2.textContent = 'Mostrar';
+//     }
+// });
+
+localStorage.setItem("clave", "1212");
+localStorage.setItem("booleano", true);
+localStorage.setItem("numero", 23);
+
+
+// //obteniendo datos de la localstorege
+// const clave1=localStorage.getItem('clave');
+
+
+for(let i =0; i<localStorage.length; i++){
+
+    let valores=localStorage.key(i);
+
+    console.log("CLAVE: " + valores + " valor: " + localStorage.getItem(valores));
+    
+};
+
+
+localStorage.setItem("clave3", 2673826);
+localStorage.removeItem("clave3");
