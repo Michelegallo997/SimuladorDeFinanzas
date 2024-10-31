@@ -333,23 +333,128 @@ const palabras = ['manzana', 'perro', 'elefante', 'gato'];
 //     }
 // });
 
-localStorage.setItem("clave", "1212");
-localStorage.setItem("booleano", true);
-localStorage.setItem("numero", 23);
+// localStorage.setItem("clave", "1212");
+// localStorage.setItem("booleano", true);
+// localStorage.setItem("numero", 23);
+// localStorage.setItem("clave3", 2673826);
 
 
-// //obteniendo datos de la localstorege
-// const clave1=localStorage.getItem('clave');
+
+// let productos=[
+//     {
+//         id: 1,
+//         nombre:"chocolate",
+//         precio:2000
+//     },
+//     {
+//         id: 2,
+//         nombre:"galleta",
+//         precio:1300
+//     }
+// ]
+// // //obteniendo datos de la localstorege
+// // const clave1=localStorage.getItem('clave');
 
 
-for(let i =0; i<localStorage.length; i++){
+// // for(let i =0; i<localStorage.length; i++){
 
-    let valores=localStorage.key(i);
+// //     let valores=localStorage.key(i);
 
-    console.log("CLAVE: " + valores + " valor: " + localStorage.getItem(valores));
+// //     console.log("CLAVE: " + valores + " valor: " + localStorage.getItem(valores));
     
-};
+// // };
 
 
-localStorage.setItem("clave3", 2673826);
-localStorage.removeItem("clave3");
+// // for(let i=0; i<localStorage.length; i++){
+// //     let mostrar_local= localStorage.key(i);
+
+// //     console.log("clave " + mostrar_local + " valor " + localStorage.getItem(mostrar_local));
+    
+// //     }
+
+// let productoJSON= JSON.stringify(productos);
+// localStorage.setItem("productos", productoJSON);
+
+// console.log(productoJSON);
+
+
+// let valor= JSON.parse(localStorage.getItem("productos"));
+// console.log(valor);
+
+
+
+let productos = [
+    {
+        id: 1,
+        nombre: "chocolate",
+        precio: 2000
+    },
+    {
+        id: 2,
+        nombre: "galleta",
+        precio: 1300
+    },
+    {
+        id: 3,
+        nombre: "limon",
+        precio: 1300
+    }
+];
+
+function mostrarProductos() {
+    const productosDiv = document.getElementById("productos");
+    productosDiv.innerHTML = ''; // Limpia el contenedor antes de agregar productos
+    productos.forEach(producto => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <h3>${producto.nombre}</h3>
+            <p>precio: ${producto.precio}</p>
+            <button onclick="agregarAlCarrito(${producto.id})">agregar al carrito</button>
+        `;
+        productosDiv.appendChild(div);
+    });
+}
+
+function agregarAlCarrito(id) {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const producto = productos.find(prod => prod.id === id);
+
+    const productoEnCarrito = carrito.find(prod => prod.id === id);
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad += 1;
+    } else {
+        carrito.push({ ...producto, cantidad: 1 });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+function mostrarCarrito() {
+    const carro = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carritoList = document.getElementById("carrito");
+    carritoList.innerHTML = '';
+    let total = 0;
+
+    carro.forEach((producto, index) => {
+        let li = document.createElement("li");
+        li.textContent = `${producto.nombre} - ${producto.precio} x ${producto.cantidad}`;
+        li.innerHTML += `<button onclick="eliminarDelCarrito(${index})">Eliminar Producto</button>`;
+        carritoList.appendChild(li);
+        total += producto.precio * producto.cantidad;
+    });
+    document.getElementById('total').textContent = "total: " + total;
+}
+
+function eliminarDelCarrito(index) {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarProductos();
+    mostrarCarrito();
+});

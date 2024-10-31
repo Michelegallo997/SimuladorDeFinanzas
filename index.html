@@ -5,11 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Finanzas</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-blue-800 flex items-center justify-center h-screen">
+<body class="bg-white">
+    <nav class="bg-gray-200 flex justify-center items-center p-4 justify-between text-gray-800 ">
+        <div class="menu">
+            <h1>logo</h1>
+            <img src="" alt="">
+        </div>
+         <div class="bottonMenu md:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 hover:bg-blue-700 focus:outline-none">
+                <button id="bottonMenu"> <i class="fas fa-bars fa-lg"></i></button>
+       
 
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">Simulador de Finanzas</h2>
+        <div id="MenuDesplegable" class="MenuPhone hidden flex">
+           
+            <ul class="flexbox">
+                <li class="mx-2"><a href="" class="hover:text-gray-200"></a>Productos</li>
+                <li class="search-container mx-2"><input type="text" placeholder="Buscar."><i class="fas fa-search"></i></li>
+                <li class="mx-2"><a href="" class="hover-text-gray-200">Contacto</a></li>
+            </ul>
+        
+</div>  
+</div> 
+        <div class="listMenu hidden md:block">
+            <ul class="flex justify-center items-center">
+                <li class="mx-2"><a href=""></a>Productos</li>
+                <li class="search-container mx-2"><input placeholder="Buscar..." type="text"><i class="fas fa-search"></i></li>
+                <li class="mx-2"><a href="">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section1">
+        <img class="portada" src="assets/milad.jpg" alt="">
+        <h2>Finanzas</h2>
+        <button class="arrowDonw"><i class="fas fa-angle-down fa-2x"></i></button>
+    </section>
+    
+<div class="contentform flex justify-center">
+    <div class="form1 bg-gray-200 p-8 rounded-lg shadow-md m-6">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Simulador de Finanzas (DEMO)</h3>
+        
+        <form id="financeForm" class="space-y-4 ">
+            <div>
+                <label class="block text-gray-700">Meta financiera (en dólares):</label>
+                <input type="number" id="meta" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 1000" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Tiempo (en meses):</label>
+                <input type="number" id="tiempo" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 12" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Ahorro inicial (en dólares):</label>
+                <input type="number" id="ahorroInicial" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 200" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Ingresos mensuales (en dólares):</label>
+                <input type="number" id="ingresos" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 2000" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Gastos mensuales (en dólares):</label>
+                <input type="number" id="gastos" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: 1500" required>
+            </div>
+            <button type="button" onclick="calcularAhorro()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Calcular Ahorro
+            </button>
+        </form>
+        <div id="resultados" class="mt-4 text-gray-800"></div>
+    </div>
+
+  
+    <div class="form1 bg-gray-200 p-8 rounded-lg shadow-md m-6">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Simulador de Finanzas (DEMO)</h3>
         
         <form id="financeForm" class="space-y-4">
             <div>
@@ -36,10 +104,12 @@
                 Calcular Ahorro
             </button>
         </form>
-
-
         <div id="resultados" class="mt-4 text-gray-800"></div>
     </div>
+ 
+    </div>
+
+
 
     <script src="app.js"></script>
 </body>
