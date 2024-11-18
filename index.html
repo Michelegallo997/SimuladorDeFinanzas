@@ -89,22 +89,26 @@
 </section>
 
 
-<section id="seccionCard" class="contenedor seccionCard flex justify-center items-center">
+<section id="seccionCard" class="contenedor1 seccionCard flex justify-center items-center">
     <div class="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="card1 p-2 border-2">
-            <img class="imagenCard" src="" alt="Producto">
-            <p class="m-4 text-center">Software de Finanzas</p>
-            <p class="m-4 text-center">Precio: $50</p>
-            <button onclick="agregarAlCarrito({ id: 1, nombre: 'Software de Finanzas', precio: 50 })" class="buttonCard bg-black text-gray-200 py-1 px-2 border-2 border-gray-800 hover:bg-gray-700 transition duration-300">Agregar al carrito</button>
-        </div>
+
     </div>
 </section>
+<div id="contenedor" class="contenedor"> </div>
+
 
 <!-- Carrito de Compras -->
 <section id="carritoContainer" class="bg-gray-200 p-4 m-4 rounded">
     <h3>Carrito de Compras</h3>
     <div id="carritoItems"></div>
 </section>
+
+<aside id="carritoContainer" class="hidden fixed top-0 right-0 h-full bg-gray-100 shadow-lg w-80 z-50 transform translate-x-full transition-transform duration-300">
+    <h3 class="text-lg font-bold p-4 border-b">Carrito de Compras</h3>
+    <div id="carritoItems" class="p-4 space-y-4"></div>
+    <button id="closeCart" class="w-full mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cerrar</button>
+</aside>
+
 
 <script src="app.js"></script>
 </body>

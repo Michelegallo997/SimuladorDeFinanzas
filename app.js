@@ -1,3 +1,21 @@
+function guardarAlmacenamientoLocal(llave, valor_a_guardar) {
+    localStorage.setItem(llave, JSON.stringify(valor_a_guardar))
+}
+function obtenerAlmacenamientoLocal(llave) {
+    const datos = JSON.parse(localStorage.getItem(llave))
+    return datos
+}
+
+let productos = obtenerAlmacenamientoLocal('productos') || [];
+let contenedor = document.getElementById('contenedor')
+window.addEventListener('load', ()=>{
+    for (let i = 0; i < productos.length; i++){
+        contenedor.innerHTML +=`<div><img class="imgc" src="${productos[i].urlImagen}" alt="producto 1"><div class="informacion"><p>${productos[i].nombre}</p><p class="precio">$${productos[i].valor}</p><button>Comprar</button></div></div>` 
+    }
+});
+
+
+
 
 document.getElementById("bottonMenu").addEventListener("click", () => {
     document.getElementById("MenuDesplegable").classList.toggle("hidden");
@@ -51,45 +69,4 @@ document.getElementById("CalcularPresupuesto").addEventListener("click", () => {
     limpiarCampos('form3'); 
 });
 
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-function agregarAlCarrito(producto) {
-    const existe = carrito.some(item => item.id === producto.id);
-    
-    existe 
-        ? carrito = carrito.map(item => item.id === producto.id ? {...item, cantidad: item.cantidad + 1} : item)
-        : carrito.push({...producto, cantidad: 1});
-    
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    mostrarCarrito();
-}
-
-function mostrarCarrito() {
-    const carritoItems = document.getElementById("carritoItems");
-    carritoItems.innerHTML = carrito.length ? "" : "Tu carrito está vacío.";
-    
-    carrito.forEach(producto => {
-        carritoItems.innerHTML += `
-            <div class="producto">
-                <p>Producto: ${producto.nombre}</p>
-                <p>Precio: $${producto.precio}</p>
-                <p>Cantidad: ${producto.cantidad}</p>
-                <button onclick="eliminarDelCarrito(${producto.id})" class="bg-red-500 text-white py-1 px-2 rounded">Eliminar</button>
-            </div>
-        `;
-    });
-}
-
-function eliminarDelCarrito(id) {
-    carrito = carrito.filter(producto => producto.id !== id);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    mostrarCarrito();
-}
-
-
-window.addEventListener("scroll", () => {
-    document.getElementById("navbar1").style.backgroundColor = document.getElementById("seccionCard").getBoundingClientRect().top < 10 ? '#363739' : '#cbcaca';
-});
-
-
-mostrarCarrito();
