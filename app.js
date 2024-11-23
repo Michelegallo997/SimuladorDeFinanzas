@@ -24,7 +24,6 @@ window.addEventListener('load', () => {
         `;
     });
 
-    // Añadir evento a los botones de compra
     const botonesComprar = document.querySelectorAll('.btn-comprar');
     botonesComprar.forEach(boton => {
         boton.addEventListener('click', () => {
@@ -34,20 +33,7 @@ window.addEventListener('load', () => {
     });
 });
 
-// Mostrar el menú desplegable
-const menuButton = document.getElementById('menuButton');
-const mobileMenu = document.getElementById('mobileMenu');
-
-menuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
-
-// Botón del carrito (puedes agregar funcionalidad adicional aquí si lo necesitas)
-const cartButton = document.getElementById('cartButton');
-cartButton.addEventListener('click', () => {
-    alert('¡Carrito de compras!');
-});
-
+// Simulador de finanzas
 document.getElementById("calcular").addEventListener("click", () => {
     const Meta = parseFloat(document.getElementById("Meta").value);
     const Tiempo = parseFloat(document.getElementById("Tiempo").value);
@@ -56,12 +42,18 @@ document.getElementById("calcular").addEventListener("click", () => {
     const mensaje = isNaN(Meta) || isNaN(Tiempo) || isNaN(ahorroInicial) || Meta < 0 || Tiempo <= 0 || ahorroInicial < 0
         ? "Ingrese datos válidos"
         : `Debes ahorrar $${((Meta - ahorroInicial) / Tiempo).toFixed(2)} cada mes`;
-    alert(mensaje);
+
+    document.getElementById("resultado1").textContent = mensaje;
+
+    // Mostrar gráfica si los datos son válidos
+    if (!isNaN(Meta) && !isNaN(Tiempo) && !isNaN(ahorroInicial) && Meta > 0 && Tiempo > 0 && ahorroInicial >= 0) {
+        mostrarGrafica(Meta, Tiempo, ahorroInicial);
+    }
 
     limpiarCampos('form1');
 });
 
-// API para conversión de moneda
+// Conversión de moneda
 document.getElementById("Cambio").addEventListener("click", async () => {
     const MontoOriginal = parseFloat(document.getElementById("MontoOriginal").value);
     const monedaDestino = "USD"; // Moneda de destino
@@ -73,11 +65,9 @@ document.getElementById("Cambio").addEventListener("click", async () => {
     }
 
     try {
-        // Petición al API de tasas de cambio
-        const response = await fetch(`https://api.exchangeratesapi.io/latest?base=${monedaBase}`);
+        const response = await fetch(`https://api.exchangerate.host/latest?base=${monedaBase}`);
         const data = await response.json();
 
-        // Obtener la tasa de cambio para la moneda destino
         const tasaDeCambio = data.rates[monedaDestino];
         document.getElementById("resultado").textContent = `El monto convertido es ${(MontoOriginal * tasaDeCambio).toFixed(2)} ${monedaDestino}`;
     } catch (error) {
@@ -88,21 +78,37 @@ document.getElementById("Cambio").addEventListener("click", async () => {
     limpiarCampos('form2'); 
 });
 
-document.getElementById("CalcularPresupuesto").addEventListener("click", () => {
-    const Ingresos = parseFloat(document.getElementById("IngresosMensuales").value);
-    const Alimento = parseFloat(document.getElementById("GastosAlimento").value);
-    const Transporte = parseFloat(document.getElementById("GastosTrasporte").value);
+// Mostrar gráfica de ahorro
+function mostrarGrafica(meta, tiempo, ahorroInicial) {
+    const ctx = document.getElementById("grafica").getContext("2d");
+    const ahorroMensual = (meta - ahorroInicial) / tiempo;
 
-    document.getElementById("resultado1").textContent = isNaN(Ingresos) || isNaN(Alimento) || isNaN(Transporte) || Ingresos < 0 || Alimento < 0 || Transporte < 0
-        ? "Ingrese datos válidos"
-        : `Tu presupuesto restante es de ${(Ingresos - (Alimento + Transporte)).toFixed(2)}`;
+    // Si ya existe una gráfica, destrúyela para evitar duplicados
+    if (window.miGrafica) {
+        window.miGrafica.destroy();
+    }
 
-    limpiarCampos('form3');
-});
-
-document.querySelectorAll('#form1, #form2, #form3').forEach(form => {
-    form.addEventListener("submit", (event) => event.preventDefault());
-});
+    window.miGrafica = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: Array.from({ length: tiempo }, (_, i) => `Mes ${i + 1}`),
+            datasets: [{
+                label: "Ahorro Mensual",
+                data: Array(tiempo).fill(ahorroMensual),
+                backgroundColor: "rgba(75, 192, 192, 0.6)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                }
+            }
+        }
+    });
+}
 
 // Función para limpiar campos de un formulario
 function limpiarCampos(formId) {
