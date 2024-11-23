@@ -116,13 +116,13 @@ select{
 .contenedor>div{
     display: flex;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    background-color: #bababa;
+    background-color: #c5c3c3;
     border-radius: 20px;
     align-items: center;
     flex-direction: column;
 }
 .contenedor>div:hover{
-    background-color: #727273;
+    background-color: #878788;
 }
 .informacion{
     height: 180px;
@@ -162,9 +162,46 @@ select{
     background-color: #23262a;
 }
 
-.imgcard {
+.imgc {
     width: 320px;
     height: 340px;
     object-fit: cover;
     border-radius: 20px 20px 0px 0px;
 }
+
+.carrito-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+#MenuDesplegable.open {
+    transform: translateX(0);
+}
+
+#MenuDesplegable {
+    transform: translateX(-100%);}
+
+    #cartCounter {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #f56565;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: bold;
+        width: 1.25rem;
+        height: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+    }
+    
+
+    .swal-title-center {
+       transform: translateX(-34%);
+    }
+
+    .title1{
+        transform: translateX(-19%)
+    }
